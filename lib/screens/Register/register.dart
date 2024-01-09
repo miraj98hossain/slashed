@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:slashed/screens/Login/login.dart';
 import 'package:slashed/screens/Register/widgets/CustomTextField.dart';
 
 class Register extends StatelessWidget {
@@ -10,7 +11,9 @@ class Register extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(
             Icons.arrow_back,
           ),
@@ -76,7 +79,7 @@ class Register extends StatelessWidget {
                   children: [
                     CustomTextField(
                       height: 56,
-                      width: 295,
+                      width: double.maxFinite,
                       lable: "Full Name",
                       inputType: TextInputType.name,
                     ),
@@ -85,7 +88,7 @@ class Register extends StatelessWidget {
                     ),
                     CustomTextField(
                       height: 56,
-                      width: 295,
+                      width: double.maxFinite,
                       lable: "Email Address",
                       inputType: TextInputType.emailAddress,
                     ),
@@ -94,7 +97,7 @@ class Register extends StatelessWidget {
                     ),
                     CustomTextField(
                       height: 56,
-                      width: 295,
+                      width: double.maxFinite,
                       lable: "Current Address",
                       inputType: TextInputType.name,
                     ),
@@ -113,7 +116,7 @@ class Register extends StatelessWidget {
                       ),
                       CustomTextField(
                         height: 56,
-                        width: 152,
+                        width: 185,
                         lable: "State",
                         inputType: TextInputType.name,
                       ),
@@ -123,7 +126,7 @@ class Register extends StatelessWidget {
                     ),
                     CustomTextField(
                       height: 56,
-                      width: 295,
+                      width: double.maxFinite,
                       lable: "Password",
                       inputType: TextInputType.name,
                     ),
@@ -132,14 +135,14 @@ class Register extends StatelessWidget {
                     ),
                     CustomTextField(
                       height: 56,
-                      width: 295,
+                      width: double.maxFinite,
                       lable: "Confirm Password",
                       inputType: TextInputType.name,
                     ),
                   ],
                 ),
               ),
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Checkbox(
@@ -158,24 +161,23 @@ class Register extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                "By creating an account, you agree to our",
-                style: GoogleFonts.dmSans(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.normal,
-                    letterSpacing: -0.8,
-                    color: Colors.grey),
-              ),
-               Text(
-                "Term and Conditions",
-                style: GoogleFonts.dmSans(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.normal,
-                    letterSpacing: -0.8,
-                    color: const Color(0xFFFC767C)),
-              )
-
+                        "By creating an account, you agree to our",
+                        style: GoogleFonts.dmSans(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            letterSpacing: -0.8,
+                            color: Colors.grey),
+                      ),
+                      Text(
+                        "Term and Conditions",
+                        style: GoogleFonts.dmSans(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            letterSpacing: -0.8,
+                            color: const Color(0xFFFC767C)),
+                      )
                     ],
                   )
                 ],
@@ -185,29 +187,25 @@ class Register extends StatelessWidget {
               ),
               Container(
                 height: 56,
-                width: 295,
+                width: double.maxFinite,
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color(0xFFFF59D4),
-                      Color(0xFFFA6F8B),
-                      Color(0xFFFF8750),
-
-                    
-                    ]
-                  ),
+                  gradient: const LinearGradient(colors: [
+                    Color(0xFFFF59D4),
+                    Color(0xFFFA6F8B),
+                    Color(0xFFFF8750),
+                  ]),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Center(
                   child: Text(
-                  "Register",
-                  style: GoogleFonts.dmSans(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      fontStyle: FontStyle.normal,
-                      letterSpacing: -0.8,
-                      color: const Color.fromARGB(255, 248, 248, 248)),
-                              ),
+                    "Register",
+                    style: GoogleFonts.dmSans(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                        letterSpacing: -0.8,
+                        color: const Color.fromARGB(255, 248, 248, 248)),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -220,5 +218,3 @@ class Register extends StatelessWidget {
     );
   }
 }
-
-
