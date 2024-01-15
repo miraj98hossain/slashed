@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slashed/screens/Landing_Screen/landing_screen.dart';
 import 'package:slashed/screens/Login/login.dart';
 import 'package:slashed/screens/Register/register.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const LandingScreen(),
     );
   }
 }
