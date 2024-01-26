@@ -22,10 +22,15 @@ class LandingScreenAppbar extends StatelessWidget
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Icon(
-            Icons.category_outlined,
-            color: Colors.white,
-            size: 30,
+          GestureDetector(
+            onTap: () {
+              Scaffold.of(context).openDrawer();
+            },
+            child: const Icon(
+              Icons.category_outlined,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
           const SizedBox(
             width: 25,

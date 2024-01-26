@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,6 +10,7 @@ class LandingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawer(),
       appBar: const LandingScreenAppbar(),
       body: SingleChildScrollView(
         child: Container(
@@ -208,6 +210,100 @@ class LandingScreen extends StatelessWidget {
   }
 }
 
+class NavigationDrawer extends StatelessWidget {
+  const NavigationDrawer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: Column(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.25,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFFFF59D4),
+                  Color(0xFFFA6F8B),
+                  Color(0xFFFF8750),
+                ],
+              ),
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 72,
+                    width: 72,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.amber),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(35),
+                      child: const Image(
+                        image: AssetImage("assets/images/userPro.png"),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Amelia Wirtz",
+                    style: GoogleFonts.dmSans(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                      letterSpacing: -0.3,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          const DrawerButtons(title: "Profile", icon: Icons.person),
+          const DrawerButtons(
+              title: "Favourites", icon: CupertinoIcons.heart_fill),
+          const DrawerButtons(
+              title: "Current Plans", icon: CupertinoIcons.cloud_fill),
+          const DrawerButtons(
+              title: "Settings", icon: CupertinoIcons.settings_solid),
+          const DrawerButtons(title: "Help & Support", icon: Icons.help_center),
+          const DrawerButtons(title: "Privacy Policy", icon: Icons.privacy_tip),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, top: 25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "Log Out",
+                  style: GoogleFonts.dmSans(
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -0.3,
+                      color: const Color(0xFFFF5ECB)),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const Icon(
+                  Icons.logout,
+                  color: Color(0xFFFF5ECB),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class FeaturePartnerItemsCards extends StatelessWidget {
   const FeaturePartnerItemsCards({
     super.key,
@@ -382,6 +478,47 @@ class FeaturePartnerItemsCards extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class DrawerButtons extends StatefulWidget {
+  const DrawerButtons({super.key, required this.title, required this.icon});
+  final String title;
+  final IconData icon;
+  @override
+  State<DrawerButtons> createState() => _DrawerButtonsState();
+}
+
+class _DrawerButtonsState extends State<DrawerButtons> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.only(left: 25, top: 25),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Icon(widget.icon, color: Colors.grey),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  widget.title,
+                  style: GoogleFonts.dmSans(
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: -0.3,
+                      color: Colors.grey),
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
