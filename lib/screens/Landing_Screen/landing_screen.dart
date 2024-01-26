@@ -175,172 +175,28 @@ class LandingScreen extends StatelessWidget {
                 child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 133,
-                            width: 230,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(7.0),
-                              ),
-                            ),
-                            child: Stack(
-                              children: [
-                                const Positioned(
-                                  child: Image(
-                                    image: AssetImage(
-                                        "assets/images/Feature_partner.png"),
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 9,
-                                  top: 10,
-                                  child: Container(
-                                    height: 25,
-                                    width: 60,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 5, vertical: 6),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      color: const Color(0xFFFFB132),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "Featured",
-                                        style: GoogleFonts.dmSans(
-                                          color: Colors.white,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w700,
-                                          fontStyle: FontStyle.normal,
-                                          letterSpacing: -0.3,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  right: 9,
-                                  top: 10,
-                                  child: Container(
-                                    height: 25,
-                                    width: 25,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      gradient: const LinearGradient(
-                                        colors: [
-                                          Color(0xFFFF59D4),
-                                          Color(0xFFFA6F8B),
-                                          Color(0xFFFF8750),
-                                        ],
-                                      ),
-                                    ),
-                                    child: const Center(
-                                      child: Image(
-                                        image: AssetImage(
-                                            "assets/icons/heart.png"),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          Container(
-                            width: 230,
-                            padding: const EdgeInsets.only(top: 10, left: 2),
-                            decoration: BoxDecoration(
-                              // color: const Color.fromARGB(255, 223, 20, 20),
-                              borderRadius: BorderRadius.circular(7.0),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Italian Homemade Cooking",
-                                  style: GoogleFonts.dmSans(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    fontStyle: FontStyle.normal,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    const Image(
-                                      image:
-                                          AssetImage("assets/icons/star.png"),
-                                    ),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "4.9",
-                                      style: GoogleFonts.dmSans(
-                                        color: const Color(0xFFFFB132),
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700,
-                                        fontStyle: FontStyle.normal,
-                                        letterSpacing: -0.3,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "1.5 KM away",
-                                      style: GoogleFonts.dmSans(
-                                        color: const Color(0xFFFC767C),
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700,
-                                        fontStyle: FontStyle.normal,
-                                        letterSpacing: -0.3,
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Container(
-                                      height: 29,
-                                      width: 77,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 15, vertical: 6),
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        color: const Color(0xFF4FBF67),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "45% OFF",
-                                          style: GoogleFonts.dmSans(
-                                            color: Colors.white,
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w700,
-                                            fontStyle: FontStyle.normal,
-                                            letterSpacing: -0.3,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
+                      return const FeaturePartnerItemsCards(
+                        height: 133,
+                        width: 230,
                       );
                     },
                     separatorBuilder: (context, index) {
                       return const SizedBox(width: 10);
+                    },
+                    itemCount: 5),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: ListView.separated(
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      return FeaturePartnerItemsCards(
+                        height: 133,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(height: 15);
                     },
                     itemCount: 5),
               )
@@ -348,6 +204,184 @@ class LandingScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class FeaturePartnerItemsCards extends StatelessWidget {
+  const FeaturePartnerItemsCards({
+    super.key,
+    required this.height,
+    required this.width,
+  });
+  final double height;
+  final double width;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: height,
+          width: width,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(7.0),
+            ),
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                top: 0,
+                child: SizedBox(
+                  height: height,
+                  width: width,
+                  child: const Image(
+                    image: AssetImage("assets/images/Feature_partner.png"),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 9,
+                top: 10,
+                child: Container(
+                  height: 25,
+                  width: 60,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 6),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: const Color(0xFFFFB132),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Featured",
+                      style: GoogleFonts.dmSans(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                        letterSpacing: -0.3,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                right: 9,
+                top: 10,
+                child: Container(
+                  height: 25,
+                  width: 25,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color(0xFFFF59D4),
+                        Color(0xFFFA6F8B),
+                        Color(0xFFFF8750),
+                      ],
+                    ),
+                  ),
+                  child: const Center(
+                    child: Image(
+                      image: AssetImage("assets/icons/heart.png"),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        Container(
+          width: width,
+          padding: const EdgeInsets.only(top: 10, left: 2),
+          decoration: BoxDecoration(
+            // color: const Color.fromARGB(255, 223, 20, 20),
+            borderRadius: BorderRadius.circular(7.0),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Italian Homemade Cooking",
+                style: GoogleFonts.dmSans(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Image(
+                    image: AssetImage("assets/icons/star.png"),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    "4.9",
+                    style: GoogleFonts.dmSans(
+                      color: const Color(0xFFFFB132),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                      letterSpacing: -0.3,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "1.5 KM away",
+                    style: GoogleFonts.dmSans(
+                      color: const Color(0xFFFC767C),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                      letterSpacing: -0.3,
+                    ),
+                  ),
+                  const Spacer(),
+                  Container(
+                    height: 29,
+                    width: 77,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: const Color(0xFF4FBF67),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "45% OFF",
+                        style: GoogleFonts.dmSans(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          fontStyle: FontStyle.normal,
+                          letterSpacing: -0.3,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
